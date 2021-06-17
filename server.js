@@ -1,3 +1,4 @@
+// import pkg
 const express = require('express')
 const expressGraphQL = require('express-graphql')
 const {
@@ -10,6 +11,7 @@ const {
 } = require('graphql')
 const app = express()
 
+// sample book/author data
 const authors = [
 	{ id: 1, name: 'J. K. Rowling' },
 	{ id: 2, name: 'J. R. R. Tolkien' },
@@ -27,9 +29,12 @@ const books = [
 	{ id: 8, name: 'Beyond the Shadows', authorId: 3 }
 ]
 
+// define schema & Types
 const BookType = new GraphQLObjectType({
   name: 'Book',
   description: 'This represents a book written by an author',
+
+  // use function to avoid circular dependency, e.g. AuthorType to be defined later
   fields: () => ({
     id: { type: GraphQLNonNull(GraphQLInt) },
     name: { type: GraphQLNonNull(GraphQLString) },
@@ -45,7 +50,7 @@ const BookType = new GraphQLObjectType({
 
 const AuthorType = new GraphQLObjectType({
   name: 'Author',
-  description: 'This represents a author of a book',
+  description: 'This represents an author of a book',
   fields: () => ({
     id: { type: GraphQLNonNull(GraphQLInt) },
     name: { type: GraphQLNonNull(GraphQLString) },
@@ -103,7 +108,11 @@ const RootMutationType = new GraphQLObjectType({
         authorId: { type: GraphQLNonNull(GraphQLInt) }
       },
       resolve: (parent, args) => {
-        const book = { id: books.length + 1, name: args.name, authorId: args.authorId }
+        const book = { 
+          id: books.length + 1, 
+          name: args.name, 
+          authorId: args.authorId 
+        }
         books.push(book)
         return book
       }
@@ -128,8 +137,11 @@ const schema = new GraphQLSchema({
   mutation: RootMutationType
 })
 
+// routing
 app.use('/graphql', expressGraphQL({
   schema: schema,
   graphiql: true
 }))
-app.listen(5000, () => console.log('Server Running'))
+port = 5000
+msg = `Server Running at URL=http://localhost:${port}/graphql ...`
+app.listen(port, () => console.log(msg))
