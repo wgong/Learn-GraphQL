@@ -1,0 +1,97 @@
+# Server Running at URL=http://localhost:5000/graphql
+
+### query a single book
+query  get_single_book  {
+  book(id:2) {
+    id
+  	name   # book title
+    author {
+      id
+      name
+    }
+  }
+}
+
+###query variable section defines input dynamically
+query  get_single_book_with_var($bookId:Int)  {
+  book(id:$bookId) {
+    id
+  	name   # book title
+    author {
+      ...author_info
+    }
+  }
+}
+
+### query a list of all books with title and author name
+query  get_books  {
+  books {
+    id
+  	name 
+    author {
+      id
+      name
+    }
+  }
+}
+
+### get an author
+query get_an_author {
+  author(id:2) {
+    id
+    name
+  }
+  
+}
+
+### query a list of authors with their books
+query get_an_author_with_books {
+  author(id:2) {
+    ...author_info
+    books {
+      id
+      name
+    }
+  }
+  
+}
+
+### query all authors
+query get_authors {
+  authors {
+    ...author_info
+  }
+  
+}
+
+### fragment - reusable fields
+fragment author_info on Author {
+  id
+  name
+}
+
+### add author
+mutation add_an_author {
+  addAuthor (
+    name: "Matei Zaharia"
+  ) {
+    name
+  }
+}
+
+### add book
+mutation add_a_book {
+  addBook (
+    name: "Spark - The definite Guide"
+    authorId: 4
+  ) {
+    name
+    authorId
+  }
+}
+
+
+### Query Variables
+{
+  "bookId": 3
+}

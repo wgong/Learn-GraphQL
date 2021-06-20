@@ -22,9 +22,16 @@ $ nodemon server.js  # launch server at http://localhost:5000/graphql
 
 ## How to use graphql API
 
+see book-author.gql
+
+## GraphQL Tutorials
 
 ```
-# title = Learn GraphQL in 40 mins 
+# title = GraphQL Full Course - Novice to Expert (Best)
+# video = https://www.youtube.com/watch?v=ed8SzALpx1Q
+# src = https://github.com/iamshaunjp/graphql-playlist
+
+# title = Learn GraphQL in 40 mins (Quick)
 # video = https://www.youtube.com/watch?v=ZQL7tL2S0oQ&t=1934s
 # src = https://github.com/WebDevSimplified/Learn-GraphQL.git
 # src = https://github.com/wgong/Learn-GraphQL
@@ -32,96 +39,11 @@ $ nodemon server.js  # launch server at http://localhost:5000/graphql
 # title = modern-graphql-tutorial
 # src = https://github.com/wgong/modern-graphql-tutorial
 
+# title = graphql-yoga
+# src = https://github.com/dotansimha/graphql-yoga
 
 # title = A Brief Tour of GraphQL
 # blog = https://dev.to/mychal/a-brief-tour-of-graphql-4lcg
-
-### query a single book
-query  get_single_book  {
-  book(id:4) {
-    id
-  	name   # book title
-    author {
-      id
-      name
-    }
-  }
-}
-
-query  get_single_book2  {
-  book(id:9) {
-    id
-  	name   # book title
-    author {
-      id
-      name
-    }
-  }
-}
-
-### query a list of all books with title and author name
-query  get_books  {
-  books {
-    id
-  	name 
-    author {
-      id
-      name
-    }
-  }
-}
-
-### get an author
-query get_an_author {
-  author(id:2) {
-    id
-    name
-  }
-  
-}
-
-### query a list of authors with their books
-query get_an_author_with_books {
-  author(id:2) {
-    id
-    name
-    books {
-      id
-      name
-    }
-  }
-  
-}
-
-### query all authors
-query get_authors {
-  authors {
-    id
-    name
-  }
-  
-}
-
-### add author
-mutation add_an_author {
-  addAuthor (
-    name: "Matei Zaharia"
-  ) {
-    name
-  }
-}
-
-### add book
-mutation add_a_book {
-  addBook (
-    name: "Spark - The definite Guide"
-    authorId: 4
-  ) {
-    name
-    authorId
-  }
-}
-
 ```
 
 ## Javascript resource

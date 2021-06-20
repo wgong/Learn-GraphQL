@@ -1,19 +1,26 @@
 {
-  "name": "current-project",
+  "name": "learn-graphql",
   "version": "1.0.0",
-  "description": "",
+  "description": "Learn GraphQL in 40 mins https://www.youtube.com/watch?v=ZQL7tL2S0oQ&t=1934s",
   "main": "server.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wgong/Learn-GraphQL.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.16.4",
-    "express-graphql": "^0.7.1",
-    "graphql": "^14.1.1"
+  "bugs": {
+    "url": "https://github.com/wgong/Learn-GraphQL/issues"
   },
-  "devDependencies": {
-    "nodemon": "^1.18.10"
+  "homepage": "https://github.com/wgong/Learn-GraphQL#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.5.0"
   }
 }
